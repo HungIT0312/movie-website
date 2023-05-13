@@ -9,6 +9,7 @@ function App() {
         <Route path="/home" index element={<HomePage />} />
         <Route path="/login" />
         <Route path="/Movie/:idMovie" element={<DetailPage />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </BrowserRouter>
   );
