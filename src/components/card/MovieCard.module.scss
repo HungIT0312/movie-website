@@ -1,0 +1,12 @@
+.card {
+  &__title {
+    display: block;
+    margin-top: 12px;
+    color: #dfdfdf;
+    text-align: center;
+  }
+  &__date {
+    color: #8d8b8b;
+    font-size: 13px;
+  }
+}
