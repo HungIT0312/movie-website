@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import MovieCard from "../card/MovieCard";
-import classes from "./RowMovie.module.scss";
+import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import MovieCard from "../card/MovieCard";
+import classes from "./RowMovie.module.scss";
 const RowMovie = (props) => {
   const responsive = {
     superLargeDesktop: {

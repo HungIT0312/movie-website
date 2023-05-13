@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
-import { IMAGE_POSTER_URL, POSTER_IMAGE } from "../../helpers/config";
+import { POSTER_IMAGE } from "../../helpers/config";
 import classes from "./MovieCard.module.scss";
 const MovieCard = (props) => {
   const handleDetailPage = (id) => {
