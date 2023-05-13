@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { getTrending } from "../../api/trending";
-import { Button, Carousel, Container, Image } from "react-bootstrap";
-import { IMAGE_POSTER_URL } from "../../helpers/config";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from "react";
+import { Carousel, Image } from "react-bootstrap";
+import { getTrending } from "../../api/trending";
+import { IMAGE_POSTER_URL } from "../../helpers/config";
 import classes from "./Banner.module.scss";
 const Banner = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [bannerItems, setBannerItems] = useState([]);
   useEffect(() => {
     const fetchTrending = async () => {

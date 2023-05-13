@@ -4,5 +4,16 @@
   padding: 40px 20px;
   &__title {
     color: white;
+    display: block;
+    width: fit-content;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      79deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(186, 255, 190, 0.8649510829722514) 0%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    color: transparent;
+    -webkit-background-clip: text;
   }
 }

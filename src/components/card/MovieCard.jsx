@@ -15,7 +15,7 @@ const MovieCard = (props) => {
       <Image
         className={classes.card__image}
         src={`${POSTER_IMAGE}${props.movie?.poster_path}`}
-        style={{ borderRadius: "16px" }}
+        style={{ borderRadius: "8px" }}
         height={250}
       />
       <span className={classes.card__title}>

@@ -4,11 +4,14 @@ import Banner from "../../components/banner/Banner";
 import RowMovie from "../../components/row/RowMovie";
 import { getTrending } from "../../api/trending";
 import { getPopular, getTopRated } from "../../api/Movie";
+import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 
 const HomePage = (props) => {
   const [trendingList, setTrendingList] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [popularList, setPopularList] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchTrending = async () => {
       const res = await getTrending();
@@ -28,8 +31,7 @@ const HomePage = (props) => {
     return () => {};
   }, []);
   const handleDetailClick = (id) => {
-    // props.history.push(`/movie/${id}`);
-    console.log(id);
+    navigate(`/Movie/${id}`);
   };
   return (
     <>
@@ -50,6 +52,7 @@ const HomePage = (props) => {
         movieList={popularList}
         onDetail={handleDetailClick}
       />
+      <Footer />
     </>
   );
 };

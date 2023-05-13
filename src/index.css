@@ -5,10 +5,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000;
+  background: #181818;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* CSS cho thanh cuộn */
+::-webkit-scrollbar {
+  width: 10px;
+  /* Độ rộng của thanh cuộn */
+}
+
+/* Track (phần nền của thanh cuộn) */
+::-webkit-scrollbar-track {
+  background: #000;
+  /* Màu nền của thanh cuộn */
+}
+
+/* Thumb (thanh cuộn chính) */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Màu của thanh cuộn */
+}
+
+/* Thumb khi hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Màu của thanh cuộn khi hover */
 }
