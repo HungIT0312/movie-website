@@ -1,20 +1,20 @@
+$secondaryColor: #a3a3a3;
 .content {
   position: absolute;
   top: 0;
-  width: 50%;
+  left: 0;
+  width: 100%;
   height: 100%;
   color: white;
   display: flex;
   align-items: baseline;
   justify-content: center;
   flex-direction: column;
-  background: rgb(0, 0, 0);
   background: linear-gradient(
     79deg,
     rgba(0, 0, 0, 1) 10%,
     rgba(255, 255, 255, 0) 100%
   );
-  padding: 64px;
   &__title {
     color: #ffffff;
     font-size: 32px;
@@ -36,10 +36,24 @@
   }
   &__overview {
     margin-top: 16px;
-    width: 50%;
+    width: 40%;
     display: block;
     color: #ffffff;
     line-height: 24px;
+  }
+  &__genres {
+    display: flex;
+    color: $secondaryColor;
+    &_item {
+      margin-right: 8px;
+      border-radius: 8px;
+      padding: 0px 8px;
+      border: 2px solid $secondaryColor;
+      &:hover {
+        color: #0d7e80;
+        cursor: default;
+      }
+    }
   }
 }
 .wrapper {

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MovieCard from "../card/MovieCard";
-import classes from "./RowMovie.module.scss";
-const RowMovie = (props) => {
+import classes from "./Row.module.scss";
+import PersonCard from "../card/PersonCard";
+const Row = (props) => {
+  const [type, setType] = useState(props.type);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -36,18 +38,29 @@ const RowMovie = (props) => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         swipeable
       >
-        {props.movieList.map((movie) => {
-          return (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              onClickDetail={handleClickDetail}
-            />
-          );
-        })}
+        {props.type !== "Person"
+          ? props.movieList.map(
+              (movie) =>
+                movie.poster_path && (
+                  <MovieCard
+                    key={movie.id}
+                    movie={movie}
+                    onClickDetail={handleClickDetail}
+                  />
+                )
+            )
+          : props.persons.map((person) => {
+              return (
+                <PersonCard
+                  key={person.id}
+                  person={person}
+                  // onClickDetail={handleClickDetail}
+                />
+              );
+            })}
       </Carousel>
     </div>
   );
 };
 
-export default RowMovie;
+export default Row;

@@ -1,0 +1,53 @@
+@mixin opt {
+  display: inline-block;
+  padding: 0px 20px;
+  background-clip: padding-box;
+  position: relative;
+  background-color: #000;
+  cursor: pointer;
+  transition: all 0.2s linear;
+
+  font-weight: 450;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    margin: -2px;
+    background-image: linear-gradient(to right top, #2979ff, #07a787);
+    border-radius: inherit;
+  }
+}
+@mixin onSelect {
+  color: black;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.switch {
+  top: 40px;
+  left: 240px;
+  color: white;
+  position: absolute;
+  z-index: 100;
+  line-height: 32px;
+  &__opt1 {
+    @include opt;
+    border-radius: 32px 0px 0px 32px;
+  }
+  &__opt2 {
+    @include opt;
+    border-radius: 0px 32px 32px 0px;
+  }
+}
+.switch__active {
+  &1 {
+    @include opt;
+    @include onSelect;
+    border-radius: 32px 0px 0px 32px;
+  }
+  &2 {
+    @include opt;
+    @include onSelect;
+    border-radius: 0px 32px 32px 0px;
+  }
+}

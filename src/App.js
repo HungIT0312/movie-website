@@ -6,11 +6,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" index element={<HomePage />} />
-        {/* <Route path="/login" /> */}
+        <Route path="/" index element={<HomePage />} />
         <Route path="/Movie/:idMovie" element={<DetailPage />} />
-        <Route path="*" element={<Navigate to="/home" replace />} />
-        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

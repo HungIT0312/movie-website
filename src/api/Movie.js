@@ -12,3 +12,9 @@ export const getMovieById = (id) => {
 export const getDiscoverMovies = () => {
   return http.get("/discover/movie");
 };
+export const getUpcomingMovie = () => {
+  return http.get("/movie/upcoming");
+};
+export const getSimilarMovie = (id) => {
+  return http.get(`/movie/${id}/similar`);
+};

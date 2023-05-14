@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import classes from "./Header.module.scss";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
   const [isScroll, setIsScroll] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
@@ -19,6 +20,7 @@ const Header = () => {
         alt="user"
         className={classes.header__logo}
         height={42}
+        onClick={() => navigate("/")}
       ></Image>
       <Image
         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"

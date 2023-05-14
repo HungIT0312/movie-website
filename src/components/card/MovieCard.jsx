@@ -21,7 +21,6 @@ const MovieCard = (props) => {
       <span className={classes.card__title}>
         {props.movie?.title || props.movie?.name}
       </span>
-      {/* <span className={classes.card__date}>{props.movie?.release_date}</span> */}
     </Container>
   );
 };

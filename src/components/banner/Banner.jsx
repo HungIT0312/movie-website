@@ -4,8 +4,11 @@ import { Carousel, Image } from "react-bootstrap";
 import { getTrending } from "../../api/trending";
 import { IMAGE_POSTER_URL } from "../../helpers/config";
 import classes from "./Banner.module.scss";
+import { useNavigate } from "react-router-dom";
 const Banner = () => {
   const [bannerItems, setBannerItems] = useState([]);
+  const [deviceWidth, setDeviceWidth] = useState(window.screen.width);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchTrending = async () => {
       const res = await getTrending();
@@ -13,8 +16,13 @@ const Banner = () => {
     };
     fetchTrending();
   }, []);
+  useEffect(() => {
+    setDeviceWidth(window.screen.width);
+    return () => {};
+  }, [deviceWidth]);
+
   const handleSelectMovie = (movie) => {
-    console.log(movie);
+    navigate(`/Movie/${movie.id}`);
   };
 
   return (
@@ -27,7 +35,7 @@ const Banner = () => {
               src={`${IMAGE_POSTER_URL}${item?.backdrop_path}`}
               alt="First slide"
               style={{
-                marginTop: "-200px",
+                marginTop: `${deviceWidth > 1024 ? "-200px" : "0"}`,
               }}
             />
             <Carousel.Caption style={{ zIndex: 2 }}>
