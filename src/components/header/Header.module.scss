@@ -4,7 +4,7 @@
   position: fixed;
   padding: 10px;
   background-color: transparent;
-  transition: background-color 0.5s ease;
+  transition: background-color 1s ease;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -21,12 +21,45 @@
   }
 
   &__user {
-    margin-right: 40px;
+    margin-left: 12px;
     cursor: pointer;
-    &:hover{
-        border-radius: 4px;
-        scale: 1.05;
-        transition: all 1 linear;
+    &:hover {
+      border-radius: 4px;
+      scale: 1.05;
+      transition: all 1 linear;
     }
   }
+  &__search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_btn {
+      border-radius: 0;
+      border: none;
+      border-radius: 0px 4px 4px 0px;
+      background-color: #0d7e8096;
+      &:hover {
+        background-color: #0d7e80;
+      }
+    }
+  }
+}
+.header__search_inputForm {
+  background-color: transparent;
+  color: white;
+  border-radius: 4px 0px 0px 4px;
+  border: none;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  transition: background-color 0.5s linear;
+  &::placeholder {
+    color: #8e8e8e;
+  }
+  &:focus {
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    color: white;
+  }
+}
+.header__search_inputBlack {
+  background-color: rgba($color: #3f3f3f, $alpha: 0.5);
 }

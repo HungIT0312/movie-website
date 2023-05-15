@@ -1,0 +1,32 @@
+.Card {
+  margin-bottom: 8px;
+  background-color: #0d1117;
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  &:hover {
+    cursor: pointer;
+    background-color: #0d1117a3;
+  }
+  &__content {
+    margin-left: 12px;
+    &_date {
+      color: white;
+      font-size: 14px;
+      display: flex;
+    }
+    &_title {
+      display: block;
+      width: 250px;
+      color: white;
+      overflow-x: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+.vote {
+  margin-right: 8px;
+  width: 54px;
+  //   padding: 0px 8px 0px 0px;
+}

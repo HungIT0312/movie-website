@@ -1,0 +1,52 @@
+.SearchForm {
+  position: absolute;
+  top: 60px;
+  right: 4%;
+  width: 400px;
+  height: 500px;
+  border-radius: 4px;
+  background-color: #0d1117;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &__alert {
+    color: white;
+    text-align: center;
+  }
+  &__header {
+    color: aliceblue;
+    text-align: center;
+  }
+  &__footer {
+  }
+  &__body {
+    overflow-y: scroll;
+    background-color: #161b22;
+  }
+}
+::-webkit-scrollbar {
+  width: 8px;
+  /* Độ rộng của thanh cuộn */
+}
+
+/* Track (phần nền của thanh cuộn) */
+::-webkit-scrollbar-track {
+  background: #161b22;
+  /* Màu nền của thanh cuộn */
+}
+
+/* Thumb (thanh cuộn chính) */
+::-webkit-scrollbar-thumb {
+  background: #6d6d6d;
+  /* Màu của thanh cuộn */
+}
+
+/* Thumb khi hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Màu của thanh cuộn khi hover */
+}
+::-webkit-scrollbar-corner {
+  background-color: #0d1117;
+}

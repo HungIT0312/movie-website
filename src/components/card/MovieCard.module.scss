@@ -9,7 +9,9 @@
     display: block;
     margin-top: 12px;
     color: #dfdfdf;
-    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   &__date {
     color: #8d8b8b;

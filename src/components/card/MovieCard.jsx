@@ -6,6 +6,10 @@ const MovieCard = (props) => {
   const handleDetailPage = (id) => {
     props.onClickDetail(id);
   };
+  const changeDate = (date = null) => {
+    const newDate = new Date(props.movie?.release_date);
+    return newDate.getFullYear();
+  };
   return (
     <Container
       className={classes.card}
@@ -21,6 +25,7 @@ const MovieCard = (props) => {
       <span className={classes.card__title}>
         {props.movie?.title || props.movie?.name}
       </span>
+      <span className={classes.card__date}>{changeDate()}</span>
     </Container>
   );
 };
