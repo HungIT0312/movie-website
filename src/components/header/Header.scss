@@ -33,19 +33,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &_btn {
-      border-radius: 0;
-      border: none;
-      border-radius: 0px 4px 4px 0px;
-      background-color: #0d7e8096;
-      &:hover {
-        background-color: #0d7e80;
-      }
-    }
   }
 }
-.header__search_inputForm {
+#inputSearch {
   background-color: transparent;
   color: white;
   border-radius: 4px 0px 0px 4px;
@@ -62,4 +52,16 @@
 }
 .header__search_inputBlack {
   background-color: rgba($color: #3f3f3f, $alpha: 0.5);
+}
+.header__search_btn {
+  border: none !important;
+  border-radius: 0px 4px 4px 0px !important;
+  background-color: #0d7e8096 !important;
+  &:hover {
+    background-color: #0d7e8096 !important;
+    cursor: alias;
+  }
+  &:active {
+    background-color: #0d7e8096 !important;
+  }
 }

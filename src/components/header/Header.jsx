@@ -4,7 +4,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { getMoviesByName } from "../../api/Search";
 import SearchForm from "../search/SearchForm";
-import classes from "./Header.module.scss";
+import "./Header.scss";
 const Header = () => {
   const [isScroll, setIsScroll] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
@@ -36,25 +36,24 @@ const Header = () => {
   };
   const handleDetailClick = (id) => {
     navigate(`/Movie/${id}`);
+    handleFocusInput();
     setKeyword("");
   };
   return (
-    <div className={`${isScroll && classes.header__black} ${classes.header}`}>
+    <div className={`${isScroll && "header__black"} header`}>
       <Image
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tmdb.new.logo.svg/2560px-Tmdb.new.logo.svg.png"
         alt="user"
-        className={classes.header__logo}
+        className="header__logo"
         height={42}
         onClick={() => navigate("/")}
       />
-      <div className={classes.header__search}>
+      <div className="header__search">
         <Form>
           <Form.Group>
             <Form.Control
               id="inputSearch"
-              className={`${classes.header__search_inputForm} ${
-                isScroll && classes.header__search_inputBlack
-              }`}
+              className={`inputForm ${isScroll && "header__search_inputBlack"}`}
               type="text"
               placeholder="Search ..."
               value={keyword}
@@ -72,13 +71,13 @@ const Header = () => {
           />
         )}
 
-        <Button className={`${classes.header__search_btn} `}>
+        <Button className="header__search_btn">
           <BiSearchAlt size={20} />
         </Button>
         <Image
           src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
           alt="user"
-          className={classes.header__user}
+          className="header__user"
           height={42}
         />
       </div>

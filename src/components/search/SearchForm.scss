@@ -1,4 +1,4 @@
-.SearchForm {
+@mixin searchMain {
   position: absolute;
   top: 60px;
   right: 4%;
@@ -10,22 +10,28 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  &__alert {
-    color: white;
-    text-align: center;
-  }
-  &__header {
-    color: aliceblue;
-    text-align: center;
-    background-color: #0d7e80;
-  }
-  &__footer {
-    color: #505050;
-  }
-  &__body {
-    overflow-y: scroll;
-    background-color: #161b22;
-  }
+}
+#searchMain {
+  @include searchMain();
+}
+.SearchForm {
+  @include searchMain();
+}
+.SearchForm__alert {
+  color: white;
+  text-align: center;
+}
+.SearchForm__header {
+  color: aliceblue;
+  text-align: center;
+  background-color: #0d7e80 !important;
+}
+.SearchForm__footer {
+  color: #505050;
+}
+.SearchForm__body {
+  overflow-y: scroll;
+  background-color: #161b22 !important;
 }
 ::-webkit-scrollbar {
   width: 8px;
