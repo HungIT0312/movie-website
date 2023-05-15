@@ -8,8 +8,11 @@ const SearchCard = (props) => {
     const newDate = new Date(props.movie?.release_date);
     return newDate.getFullYear();
   };
+  const handleDetail = (id) => {
+    props.onDetail(id);
+  };
   return (
-    <div className={classes.Card}>
+    <div className={classes.Card} onClick={() => handleDetail(props.movie?.id)}>
       <Image
         className={classes.Card__image}
         src={`${POSTER_IMAGE}${props.movie?.poster_path}`}

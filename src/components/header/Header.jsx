@@ -10,7 +10,6 @@ const Header = () => {
   const [isFocus, setIsFocus] = useState(false);
   const [keyword, setKeyword] = useState("");
   const [movieList, setMovieList] = useState([]);
-  const [isLoading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -22,22 +21,23 @@ const Header = () => {
   }, []);
   useEffect(() => {
     const getSearchMovie = async (params) => {
-      setLoading(true);
       const res = await getMoviesByName(params);
       setMovieList(res.results);
-      setLoading(false);
     };
     keyword ? getSearchMovie(keyword) : setMovieList([]);
   }, [keyword]);
 
   const handleFocusInput = () => {
     setIsFocus((prev) => !prev);
-    setKeyword("");
   };
   const handleKeyword = (e) => {
+    setIsFocus(true);
     setKeyword(e.target.value);
   };
-
+  const handleDetailClick = (id) => {
+    navigate(`/Movie/${id}`);
+    setKeyword("");
+  };
   return (
     <div className={`${isScroll && classes.header__black} ${classes.header}`}>
       <Image
@@ -60,12 +60,16 @@ const Header = () => {
               value={keyword}
               onChange={handleKeyword}
               onFocus={handleFocusInput}
-              onBlur={handleFocusInput}
             />
           </Form.Group>
         </Form>
-        {isFocus && !isLoading && (
-          <SearchForm keyword={keyword} movies={movieList} />
+        {isFocus && (
+          <SearchForm
+            keyword={keyword}
+            movies={movieList}
+            onDetail={handleDetailClick}
+            onBlur={handleFocusInput}
+          />
         )}
 
         <Button className={`${classes.header__search_btn} `}>

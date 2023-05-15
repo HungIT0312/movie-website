@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import classes from "./SearchForm.module.scss";
-import SearchCard from "../card/SearchCard";
+import React from "react";
 import { Card } from "react-bootstrap";
+import SearchCard from "../card/SearchCard";
+import classes from "./SearchForm.module.scss";
 const SearchForm = (props) => {
-  const { keyword, movies } = props;
-
+  const { keyword, movies, onDetail } = props;
+  const handleDetail = (id) => {
+    props.onDetail(id);
+  };
   return (
     <Card className={classes.SearchForm}>
       <Card.Header className={classes.SearchForm__header}>
@@ -13,11 +15,11 @@ const SearchForm = (props) => {
       <Card.Body className={classes.SearchForm__body}>
         {movies &&
           movies?.map((movie, index) => (
-            <SearchCard key={index} movie={movie} />
+            <SearchCard onDetail={handleDetail} key={index} movie={movie} />
           ))}
         {keyword === "" && <p className={classes.SearchForm__alert}></p>}
       </Card.Body>
-      <Card.Footer className={classes.SearchForm__footer}>nonoe</Card.Footer>
+      <Card.Footer className={classes.SearchForm__footer}></Card.Footer>
     </Card>
   );
 };
