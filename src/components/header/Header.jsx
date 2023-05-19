@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getMoviesByName } from "../../api/Search";
 import SearchForm from "../search/SearchForm";
 import "./Header.scss";
+import logo from "../../assets/image/logoweb.png";
 const Header = () => {
   const [isScroll, setIsScroll] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
@@ -42,10 +43,10 @@ const Header = () => {
   return (
     <div className={`${isScroll && "header__black"} header`}>
       <Image
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tmdb.new.logo.svg/2560px-Tmdb.new.logo.svg.png"
+        src={logo}
         alt="user"
         className="header__logo"
-        height={42}
+        height={90}
         onClick={() => navigate("/")}
       />
       <div className="header__search">

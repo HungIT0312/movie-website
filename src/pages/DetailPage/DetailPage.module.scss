@@ -61,3 +61,60 @@ $secondaryColor: #a3a3a3;
   width: 100%;
   min-height: auto;
 }
+.informationBox {
+  display: flex;
+  padding: 48px 0 !important;
+  background-color: black;
+  &__cast {
+    padding: 0;
+  }
+  &__content {
+    padding: 0;
+    margin: 40px 0px;
+    background-color: black;
+    color: #ffffff;
+  }
+}
+.Box_Tittle {
+  font-size: 16px;
+  font-weight: 700;
+  cursor: default;
+}
+.Box_Content {
+  font-size: 16px;
+  font-weight: 100;
+  cursor: default;
+}
+.options {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 60px;
+  z-index: 2000;
+  background: rgb(50, 50, 50);
+  background: linear-gradient(
+    79deg,
+    rgba(50, 50, 50, 1) 14%,
+    rgba(24, 24, 24, 1) 100%
+  );
+  border-radius: 4px;
+  top: calc(100% - 30px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.youtubeBtn {
+  margin-right: 8px;
+  transition: scale 0.2s linear;
+  cursor: pointer;
+  border-bottom: 4px solid rgb(94, 0, 0);
+  transition: border 0.5s linear;
+  &:hover {
+    scale: 1.08;
+    background-color: #e03d45f7;
+  }
+  &:active {
+    border: none;
+  }
+}

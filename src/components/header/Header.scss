@@ -5,7 +5,7 @@
   padding: 10px;
   background-color: transparent;
   transition: background-color 1s ease;
-  z-index: 100;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,14 +36,13 @@
   }
 }
 #inputSearch {
-  background-color: transparent;
   color: white;
   border-radius: 4px 0px 0px 4px;
   border: none;
   background-color: rgba($color: #000000, $alpha: 0.5);
-  transition: background-color 0.5s linear;
+  transition: background-color 0.5s ease-in;
   &::placeholder {
-    color: #8e8e8e;
+    color: #999999;
   }
   &:focus {
     background-color: rgba($color: #000000, $alpha: 0.8);
@@ -51,7 +50,7 @@
   }
 }
 .header__search_inputBlack {
-  background-color: rgba($color: #3f3f3f, $alpha: 0.5);
+  background-color: rgba(145, 145, 145, 0.2) !important;
 }
 .header__search_btn {
   border: none !important;

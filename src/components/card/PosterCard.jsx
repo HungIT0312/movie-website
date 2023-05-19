@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Image } from "react-bootstrap";
 import { POSTER_IMAGE } from "../../helpers/config";
 import classes from "./MovieCard.module.scss";
-const MovieCard = (props) => {
+const PosterCard = (props) => {
   const handleDetailPage = (id) => {
     props.onClickDetail(id);
   };
@@ -22,8 +22,8 @@ const MovieCard = (props) => {
         className={classes.card__image}
         src={`${POSTER_IMAGE}${props.movie?.poster_path}`}
         style={{ borderRadius: "8px" }}
-        height={220}
-        width={150}
+        // height={220}
+        // width={150}
       />
       <span className={classes.card__title}>
         {props.movie?.title || props.movie?.name}
@@ -33,4 +33,4 @@ const MovieCard = (props) => {
   );
 };
 
-export default MovieCard;
+export default PosterCard;

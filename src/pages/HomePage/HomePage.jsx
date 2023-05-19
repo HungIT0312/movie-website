@@ -7,7 +7,7 @@ import { getTrending } from "../../api/trending";
 import Banner from "../../components/banner/Banner";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import Row from "../../components/row/Row";
+import RowItem from "../../components/row/Row";
 import classes from "./HomePage.scss";
 import { getTVPopular } from "../../api/TV";
 const HomePage = (props) => {
@@ -23,33 +23,28 @@ const HomePage = (props) => {
 
   const navigate = useNavigate();
   useEffect(() => {
+    setLoading(true);
     const fetchTrending = async () => {
-      setLoading(true);
       const res = await getTrending();
       setTrendingList(res?.results);
     };
     const fetchTopRated = async () => {
-      setLoading(true);
       const res = await getTopRated();
       setTopRated(res?.results);
     };
     const fetchPopular = async () => {
-      setLoading(true);
       const res = await getPopular();
       setPopularList(res?.results);
     };
     const fetchUpcoming = async () => {
-      setLoading(true);
       const res = await getUpcomingMovie();
       setUpcomingList(res?.results);
     };
     const fetchTrendingPeople = async () => {
-      setLoading(true);
       const res = await getTrendingPeople();
       setTrendingPeoples(res?.results);
     };
     const fetchTvPopular = async () => {
-      setLoading(true);
       const res = await getTVPopular();
       setTvList(res?.results);
       setLoading(false);
@@ -60,6 +55,7 @@ const HomePage = (props) => {
     fetchUpcoming();
     fetchTrendingPeople();
     fetchTvPopular();
+    setLoading(false);
   }, []);
   const handleDetailClick = (id) => {
     navigate(`/Movie/${id}`);
@@ -73,18 +69,12 @@ const HomePage = (props) => {
       <Banner />
       {!isLoading && (
         <>
-          <Row
+          {/* <RowItem
             title={"Trending Now"}
             type={"Movie"}
             movieList={trendingList}
             onDetail={handleDetailClick}
-          />
-          <Row
-            title={"Trending People"}
-            type={"Person"}
-            persons={trendingPeoples}
-            onDetail={handleDetailClick}
-          />
+          /> */}
 
           <Container fluid style={{ padding: 0, position: "relative" }}>
             <div className="switch">
@@ -101,26 +91,36 @@ const HomePage = (props) => {
                 In Theaters
               </span>
             </div>
-            <Row
+            <RowItem
               title={"What's Popular"}
               type={"Movie"}
               movieList={!isTV ? popularList : tvList}
               onDetail={handleDetailClick}
               className={classes.rowPopular}
+              numItem={8}
             />
           </Container>
-          <Row
+          <RowItem
+            title={"Trending People"}
+            type={"Person"}
+            persons={trendingPeoples}
+            onDetail={handleDetailClick}
+            numItem={8}
+          />
+          <RowItem
             title={"Top Rated Movie"}
             type={"Movie"}
             movieList={topRated}
             onDetail={handleDetailClick}
+            numItem={8}
           />
 
-          <Row
+          <RowItem
             title={"Upcoming Movie"}
             type={"Movie"}
             movieList={upcomingList}
             onDetail={handleDetailClick}
+            numItem={8}
           />
         </>
       )}

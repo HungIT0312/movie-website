@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Footer.module.scss";
+import logo from "../../assets/image/logoweb.png";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 const Footer = () => {
   return (
@@ -10,6 +11,7 @@ const Footer = () => {
       <Row
         style={{
           paddingTop: 64,
+          paddingBottom: 32,
           display: "flex",
           justifyContent: "center",
           margin: "0px 100px",
@@ -18,6 +20,7 @@ const Footer = () => {
       >
         <Col
           md={2}
+          xs={2}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -25,45 +28,56 @@ const Footer = () => {
             justifyContent: "flex-start",
           }}
         >
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tmdb.new.logo.svg/2560px-Tmdb.new.logo.svg.png"
-            alt="user"
-            // className={classes.header__logo}
-            height={80}
-          ></Image>
-          <Button
+          <Image src={logo} alt="user" height={150}></Image>
+        </Col>
+        <Col md={2} xs={2}>
+          <h5>DESIGN</h5>
+          {/* <p>Giới thiệu về Website</p> */}
+          <p>Nguyen Hung</p>
+          <p>Netflix</p>
+          <p>TheMovieDB</p>
+        </Col>
+        <Col md={2} xs={2}>
+          <h5>CONTACT</h5>
+          <a
             style={{
-              padding: "0px 20px",
-              marginTop: 16,
-              backgroundColor: "white",
-              color: "#01b4e4",
-              fontSize: 24,
-              fontWeight: 600,
-              lineHeight: 1.6,
+              display: "block",
+              color: "white",
+              textDecoration: "none",
+              paddingBottom: 12,
             }}
+            href="https://www.facebook.com/hipgat"
+            target="_blank"
+            rel="noreferrer"
           >
-            Hi Hung !
-          </Button>
-        </Col>
-        <Col md={2}>
-          <h5>THE BASICS</h5>
-          <p>Giới thiệu về Website</p>
-          <p>Contact Us</p>
-          <p>Support Forums</p>
-          <p>Api Docs</p>
-        </Col>
-        <Col md={2}>
-          <h5>GET INVOLVED</h5>
-          <p>Contribution Bible</p>
-          <p>Add New Movie </p>
-          <p>Add New TV Show</p>
-        </Col>
-        <Col md={2}>
-          <h5>COMMUNITY</h5>
-          <p>Guidelines</p>
-          <p>Discussions</p>
-          <p>Leaderboard</p>
-          <p> Twitter</p>
+            Facebook
+          </a>
+          <a
+            style={{
+              display: "block",
+              color: "white",
+              textDecoration: "none",
+              paddingBottom: 12,
+            }}
+            href="https://github.com/HungIT0312"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Github{" "}
+          </a>
+          <a
+            style={{
+              display: "block",
+              color: "white",
+              textDecoration: "none",
+              paddingTop: 8,
+            }}
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.linkedin.com/in/hungnguyen0312/"
+          >
+            Linkedin
+          </a>
         </Col>
       </Row>
     </Container>

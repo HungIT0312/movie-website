@@ -4,8 +4,9 @@ import "react-multi-carousel/lib/styles.css";
 import MovieCard from "../card/MovieCard";
 import classes from "./Row.module.scss";
 import PersonCard from "../card/PersonCard";
-const Row = (props) => {
-  const [type, setType] = useState(props.type);
+const RowItem = (props) => {
+  const { movieList, persons, type, numItem, ...rest } = props;
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -14,7 +15,7 @@ const Row = (props) => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 8,
+      items: numItem,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -25,42 +26,46 @@ const Row = (props) => {
       items: 2,
     },
   };
-
   const handleClickDetail = (movie) => {
     props.onDetail(movie);
+  };
+  const renderCard = (type) => {
+    switch (type) {
+      case "Movie":
+        return movieList?.map(
+          (movie) =>
+            movie.poster_path && (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                onClickDetail={handleClickDetail}
+              />
+            )
+        );
+      case "Person":
+        return persons?.map((person) => {
+          return <PersonCard key={person.id} person={person} />;
+        });
+      case "Film":
+        return props?.posterList.map();
+      default:
+        return <></>;
+    }
   };
   return (
     <div className={classes.rowMovie}>
       <h3 className={classes.rowMovie__title}> {props.title}</h3>
       <Carousel
+        style={{ zIndex: "-100!important" }}
         className="row-wrapper"
         responsive={responsive}
         removeArrowOnDeviceType={["tablet", "mobile"]}
         swipeable
       >
-        {props.type !== "Person"
-          ? props.movieList.map(
-              (movie) =>
-                movie.poster_path && (
-                  <MovieCard
-                    key={movie.id}
-                    movie={movie}
-                    onClickDetail={handleClickDetail}
-                  />
-                )
-            )
-          : props.persons.map((person) => {
-              return (
-                <PersonCard
-                  key={person.id}
-                  person={person}
-                  // onClickDetail={handleClickDetail}
-                />
-              );
-            })}
+        {renderCard(type)}
       </Carousel>
     </div>
   );
 };
 
-export default Row;
+export default RowItem;

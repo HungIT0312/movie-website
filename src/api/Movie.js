@@ -18,3 +18,9 @@ export const getUpcomingMovie = () => {
 export const getSimilarMovie = (id) => {
   return http.get(`/movie/${id}/similar`);
 };
+export const getMovieTrailer = (id) => {
+  return http.get(`/movie/${id}/videos`);
+};
+export const getCredits = (id) => {
+  return http.get(`/movie/${id}/credits`);
+};
