@@ -94,14 +94,13 @@ const DetailPage = () => {
           <span
             style={{
               display: "block",
-              padding: "0px 12px",
+              padding: "0px 24px",
               backgroundColor: "red",
-              boxSshadow: "#000000 0px 1px 0px 0px",
-              borderRadius: 4,
+              borderRadius: 8,
             }}
             className={classes.youtubeBtn}
           >
-            <BiPlay size={32} />
+            <BiPlay size={32} color="white" />
           </span>
         </Container>
       </Container>
