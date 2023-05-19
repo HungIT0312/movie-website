@@ -24,3 +24,6 @@ export const getMovieTrailer = (id) => {
 export const getCredits = (id) => {
   return http.get(`/movie/${id}/credits`);
 };
+export const getVideoMovie = (id) => {
+  return http.get(`/movie/${id}/videos`);
+};

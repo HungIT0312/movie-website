@@ -47,7 +47,6 @@ const HomePage = (props) => {
     const fetchTvPopular = async () => {
       const res = await getTVPopular();
       setTvList(res?.results);
-      setLoading(false);
     };
     fetchTopRated();
     fetchTrending();
@@ -57,8 +56,11 @@ const HomePage = (props) => {
     fetchTvPopular();
     setLoading(false);
   }, []);
-  const handleDetailClick = (id) => {
+  const handleDetailMovieClick = (id) => {
     navigate(`/Movie/${id}`);
+  };
+  const handleDetailTVClick = (id) => {
+    navigate(`/TV/${id}`);
   };
   const handleIsTv = () => {
     setIsTV((prev) => !prev);
@@ -69,13 +71,6 @@ const HomePage = (props) => {
       <Banner />
       {!isLoading && (
         <>
-          {/* <RowItem
-            title={"Trending Now"}
-            type={"Movie"}
-            movieList={trendingList}
-            onDetail={handleDetailClick}
-          /> */}
-
           <Container fluid style={{ padding: 0, position: "relative" }}>
             <div className="switch">
               <span
@@ -95,7 +90,7 @@ const HomePage = (props) => {
               title={"What's Popular"}
               type={"Movie"}
               movieList={!isTV ? popularList : tvList}
-              onDetail={handleDetailClick}
+              onDetail={isTV ? handleDetailTVClick : handleDetailMovieClick}
               className={classes.rowPopular}
               numItem={8}
             />
@@ -104,14 +99,14 @@ const HomePage = (props) => {
             title={"Trending People"}
             type={"Person"}
             persons={trendingPeoples}
-            onDetail={handleDetailClick}
+            onDetail={handleDetailMovieClick}
             numItem={8}
           />
           <RowItem
             title={"Top Rated Movie"}
             type={"Movie"}
             movieList={topRated}
-            onDetail={handleDetailClick}
+            onDetail={handleDetailMovieClick}
             numItem={8}
           />
 
@@ -119,7 +114,7 @@ const HomePage = (props) => {
             title={"Upcoming Movie"}
             type={"Movie"}
             movieList={upcomingList}
-            onDetail={handleDetailClick}
+            onDetail={handleDetailMovieClick}
             numItem={8}
           />
         </>

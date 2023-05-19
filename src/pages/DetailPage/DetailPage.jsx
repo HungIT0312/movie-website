@@ -1,42 +1,112 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getCredits, getMovieById, getSimilarMovie } from "../../api/Movie";
+import {
+  getCredits,
+  getMovieById,
+  getMovieTrailer,
+  getSimilarMovie,
+} from "../../api/Movie";
 import { IMAGE_POSTER_URL } from "../../helpers/config";
 import classes from "./DetailPage.module.scss";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import RowItem from "../../components/row/Row";
-import { BiLink, BiPlay, BiSearchAlt } from "react-icons/bi";
-
+import { BiLink, BiPlay } from "react-icons/bi";
+import YouTube from "react-youtube";
+import {
+  getTVCredits,
+  getTVDetail,
+  getTVSimilar,
+  getVideoTV,
+} from "../../api/TV";
+import movieTrailer from "movie-trailer";
 const DetailPage = () => {
   var { idMovie } = useParams();
   const [movie, setMovie] = useState({});
   const [similarList, setSimilarList] = useState([]);
   const [credits, setCredits] = useState([]);
+  const [video, setVideo] = useState();
+  const [trailerUrl, setTrailerUrl] = useState("");
+
   const navigate = useNavigate();
+  const isTV = window.location.pathname.includes("/TV/");
   useEffect(() => {
     const getMovieDetail = async () => {
       const response = await getMovieById(idMovie);
-      console.log(response);
+      setMovie(response);
+    };
+    const _getTVDetail = async () => {
+      const response = await getTVDetail(idMovie);
       setMovie(response);
     };
     const getSimilar = async () => {
       const res = await getSimilarMovie(idMovie);
       setSimilarList(res.results);
     };
+    const getSimilarTV = async () => {
+      const res = await getTVSimilar(idMovie);
+      setSimilarList(res.results);
+    };
     const getCreditMovie = async () => {
       const res = await getCredits(idMovie);
       setCredits(res.cast);
-      console.log(res.cast);
     };
-    getMovieDetail();
-    getCreditMovie();
-    getSimilar();
-  }, [idMovie]);
+    const _getTVCredit = async () => {
+      const res = await getTVCredits(idMovie);
+      setCredits(res.cast);
+    };
+    const _getVideoTV = async () => {
+      const res = await getVideoTV(idMovie);
+      setVideo(res?.results[0]);
+    };
+    const _getVideoMovie = async () => {
+      const res = await getMovieTrailer(idMovie);
+      setVideo(res?.results[0]);
+    };
+
+    if (isTV) {
+      _getTVDetail();
+      _getTVCredit();
+      getSimilarTV();
+      _getVideoTV();
+    } else {
+      getMovieDetail();
+      getCreditMovie();
+      getSimilar();
+      _getVideoMovie();
+    }
+  }, [idMovie, isTV]);
   const handleDetailClick = (id) => {
     idMovie = id;
-    navigate(`/Movie/${id}`);
+    !isTV ? navigate(`/Movie/${id}`) : navigate(`/TV/${id}`);
+  };
+  const opts = {
+    height: "650",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+    muted: false,
+  };
+  const handleScrollToView = () => {
+    const element = document.getElementById("youtube");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  const handleClickPlay = (movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(movie?.name || movie?.title || video?.key)
+        .then((url) => {
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerUrl(urlParams.get("v"));
+        })
+        .catch(() => console.log("Temporary Unavailable"));
+      handleScrollToView();
+    }
   };
   const ContentBox = (prop) => {
     return (
@@ -99,6 +169,9 @@ const DetailPage = () => {
               borderRadius: 8,
             }}
             className={classes.youtubeBtn}
+            onClick={() => {
+              handleClickPlay(movie);
+            }}
           >
             <BiPlay size={32} color="white" />
           </span>
@@ -133,7 +206,15 @@ const DetailPage = () => {
           <ContentBox title={"Revenue"} content={`$ ${movie?.revenue} `} />
         </Col>
       </Container>
-
+      <Container id="youtube" fluid style={{ padding: 0 }}>
+        {trailerUrl && (
+          <YouTube
+            style={{ backgroundColor: "black" }}
+            videoId={trailerUrl}
+            opts={opts}
+          />
+        )}
+      </Container>
       <RowItem
         title={"Similar Movies"}
         type={"Movie"}

@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" index element={<HomePage />} />
         <Route path="/Movie/:idMovie" element={<DetailPage />} />
+        <Route path="/TV/:idMovie" element={<DetailPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
