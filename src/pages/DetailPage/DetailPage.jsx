@@ -85,7 +85,7 @@ const DetailPage = () => {
     height: "650",
     width: "100%",
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
     muted: false,
   };
