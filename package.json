@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
-    "gh-pages": "^5.0.0",
     "movie-trailer": "^3.0.0",
     "node-sass": "^8.0.0",
     "react": "^18.2.0",
