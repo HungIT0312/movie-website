@@ -1,26 +1,26 @@
+import movieTrailer from "movie-trailer";
 import React, { useEffect, useState } from "react";
-import { Col, Container, Image, Row } from "react-bootstrap";
+import { Col, Container, Image } from "react-bootstrap";
+import { BiLink, BiPlay } from "react-icons/bi";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import YouTube from "react-youtube";
 import {
   getCredits,
   getMovieById,
   getMovieTrailer,
   getSimilarMovie,
 } from "../../api/Movie";
-import { IMAGE_POSTER_URL } from "../../helpers/config";
-import classes from "./DetailPage.module.scss";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
-import RowItem from "../../components/row/Row";
-import { BiLink, BiPlay } from "react-icons/bi";
-import YouTube from "react-youtube";
 import {
   getTVCredits,
   getTVDetail,
   getTVSimilar,
   getVideoTV,
 } from "../../api/TV";
-import movieTrailer from "movie-trailer";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import RowItem from "../../components/row/Row";
+import { IMAGE_POSTER_URL } from "../../helpers/config";
+import classes from "./DetailPage.module.scss";
 const DetailPage = () => {
   var { idMovie } = useParams();
   const [movie, setMovie] = useState({});

@@ -2,16 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { getPopular, getTopRated, getUpcomingMovie } from "../../api/Movie";
+import { getTVPopular } from "../../api/TV";
 import { getTrendingPeople } from "../../api/TrendingPerson";
-import { getTrending } from "../../api/trending";
 import Banner from "../../components/banner/Banner";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import RowItem from "../../components/row/Row";
 import classes from "./HomePage.scss";
-import { getTVPopular } from "../../api/TV";
 const HomePage = (props) => {
-  const [trendingList, setTrendingList] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [popularList, setPopularList] = useState([]);
   const [upcomingList, setUpcomingList] = useState([]);
@@ -24,10 +22,7 @@ const HomePage = (props) => {
   const navigate = useNavigate();
   useEffect(() => {
     setLoading(true);
-    const fetchTrending = async () => {
-      const res = await getTrending();
-      setTrendingList(res?.results);
-    };
+
     const fetchTopRated = async () => {
       const res = await getTopRated();
       setTopRated(res?.results);
@@ -49,7 +44,6 @@ const HomePage = (props) => {
       setTvList(res?.results);
     };
     fetchTopRated();
-    fetchTrending();
     fetchPopular();
     fetchUpcoming();
     fetchTrendingPeople();
