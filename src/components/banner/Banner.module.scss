@@ -1,8 +1,4 @@
 .banner {
-  &__image {
-    margin-top: -200px;
-  }
-
   &__blur {
     position: absolute;
     top: 0;
@@ -21,5 +17,19 @@
   &__title {
     font-weight: 700;
     margin-bottom: 32px;
+  }
+}
+@media screen and (min-width: 1024px) {
+}
+@media screen and (max-width: 1024px) {
+  .banner {
+    &__title {
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    &__overview {
+      font-size: 8px;
+    }
   }
 }

@@ -7,7 +7,6 @@ import classes from "./Banner.module.scss";
 import { useNavigate } from "react-router-dom";
 const Banner = () => {
   const [bannerItems, setBannerItems] = useState([]);
-  const [deviceWidth, setDeviceWidth] = useState(window.screen.width);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchTrending = async () => {
@@ -16,33 +15,27 @@ const Banner = () => {
     };
     fetchTrending();
   }, []);
-  useEffect(() => {
-    setDeviceWidth(window.screen.width);
-    return () => {};
-  }, [deviceWidth]);
 
   const handleSelectMovie = (movie) => {
     navigate(`/Movie/${movie.id}`);
   };
-
+  const deviceWidth = window.screen.width;
   return (
     <div className={classes.banner__wrapper}>
       <Carousel slide={false} className={classes.banner}>
         {bannerItems.map((item) => (
           <Carousel.Item key={item?.id}>
             <Image
-              className=" w-100"
+              className="w-100 h-75"
               src={`${IMAGE_POSTER_URL}${item?.backdrop_path}`}
               alt="First slide"
-              style={{
-                marginTop: `${deviceWidth > 1024 ? "-200px" : "0"}`,
-              }}
+              style={{ marginTop: `${deviceWidth > 1024 ? "-200px" : "0"}` }}
             />
             <Carousel.Caption style={{ zIndex: 2 }}>
               <h1 className={classes.banner__title}>
                 {item?.title || item?.original_title || item?.name}
               </h1>
-              <p>{item?.overview}</p>
+              <p className={classes.banner__overview}>{item?.overview}</p>
             </Carousel.Caption>
             <div
               className={classes.banner__blur}

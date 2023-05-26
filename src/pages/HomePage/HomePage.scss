@@ -51,3 +51,33 @@
     border-radius: 0px 32px 32px 0px;
   }
 }
+@media screen and (max-width: 1024px) {
+  .switch {
+    font-size: 16px;
+    &__opt1 {
+      @include opt;
+      padding: 2px !important;
+
+      border-radius: 32px 0px 0px 32px;
+    }
+    &__opt2 {
+      @include opt;
+      padding: 2px !important;
+      border-radius: 0px 32px 32px 0px;
+    }
+    &__active {
+      &1 {
+        @include opt;
+        @include onSelect;
+        padding: 2px !important;
+        border-radius: 32px 0px 0px 32px;
+      }
+      &2 {
+        @include opt;
+        @include onSelect;
+        padding: 2px !important;
+        border-radius: 0px 32px 32px 0px;
+      }
+    }
+  }
+}

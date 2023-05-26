@@ -29,7 +29,10 @@ const Header = () => {
   }, [keyword]);
 
   const handleFocusInput = () => {
-    setIsFocus((prev) => !prev);
+    setIsFocus(true);
+  };
+  const handleBlurInput = () => {
+    setIsFocus(false);
   };
   const handleKeyword = (e) => {
     setIsFocus(true);
@@ -68,7 +71,7 @@ const Header = () => {
             keyword={keyword}
             movies={movieList}
             onDetail={handleDetailClick}
-            onBlur={handleFocusInput}
+            onBlurSearch={handleBlurInput}
           />
         )}
 

@@ -212,6 +212,7 @@ const DetailPage = () => {
             style={{ backgroundColor: "black" }}
             videoId={trailerUrl}
             opts={opts}
+            className={classes.youtube_video}
           />
         )}
       </Container>

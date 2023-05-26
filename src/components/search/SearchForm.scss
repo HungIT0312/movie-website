@@ -58,3 +58,17 @@
 ::-webkit-scrollbar-corner {
   background-color: #0d1117;
 }
+.Close_button {
+  cursor: pointer;
+  text-align: center;
+  padding: 0px 8px;
+  color: #161b22;
+  border-radius: 16px;
+  background-color: #010101;
+  color: whitesmoke;
+
+  &:hover {
+    color: whitesmoke;
+    background-color: rgb(153, 2, 2);
+  }
+}
